@@ -1,1 +1,74 @@
-@import '~bootstrap/scss/bootstrap'
+@import '~bootstrap/scss/bootstrap';
+
+
+.posts {
+    margin: 4rem 0;
+    border-top: 2px solid #b0b0b0;
+
+    .post {
+        border-bottom: 2px solid #b0b0b0;
+
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all .5s ease;
+        cursor: pointer;
+        overflow: hidden;
+        position: relative;
+
+        &:hover {
+            background-color: #EF3B2D;
+        }
+
+        &:hover .title {
+            color: white;
+        }
+
+        .post_content {
+            position: absolute;
+            z-index: -1;
+            align-items: center;
+            display: none;
+        }
+
+        img {
+            width: 50%;
+            left: 0;
+        }
+
+        .description {
+            width: 50%;
+            padding: 4rem;
+        }
+    }
+
+    .post.open {
+        height: 300px;
+    }
+
+    .post.open:hover {
+        background-color: transparent;
+        height: 300px;
+    }
+
+    .post.open img {
+        display: block;
+    }
+
+
+}
+
+.pagination {
+    margin-top: 5rem;
+}
+
+.page-link {
+    color: #656565;
+}
+
+.page-link.active,
+.active>.page-link {
+    background-color: #EF3B2D;
+    border-color: #EF3B2D;
+}
