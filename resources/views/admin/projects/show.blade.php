@@ -11,7 +11,7 @@
                         <h5>Description:</h5>
                         <p class="description">{{ $project->content }}</p>
                     </div>
-                    <div>
+                    <div class="d-flex gap-2">
                         <a class="btn btn-secondary" href="{{ route('admin.projects.edit', $project) }}">Edit Post</a>
                         <form method="post" action="{{ route('admin.projects.destroy', $project) }}">
                             @csrf
