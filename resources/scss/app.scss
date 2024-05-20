@@ -1,11 +1,11 @@
 @import '~bootstrap/scss/bootstrap';
 
 
-.posts {
+.projects {
     margin: 4rem 0;
     border-top: 2px solid #b0b0b0;
 
-    .post {
+    .project {
         border-bottom: 2px solid #b0b0b0;
 
         height: 100px;
@@ -34,7 +34,7 @@
             display: none;
         }
 
-        .post_content {
+        .project_content {
             position: absolute;
             z-index: -1;
             align-items: center;
@@ -53,16 +53,16 @@
         }
     }
 
-    .post.open {
+    .project.open {
         height: 300px;
     }
 
-    .post.open:hover {
+    .project.open:hover {
         background-color: transparent;
         height: 300px;
     }
 
-    .post.open img {
+    .project.open img {
         display: block;
     }
 
