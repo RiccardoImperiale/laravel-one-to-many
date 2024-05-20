@@ -25,6 +25,15 @@
             color: white;
         }
 
+        a {
+            z-index: 999;
+            display: inline-block;
+            position: absolute;
+            right: 0;
+            bottom: 2rem;
+            display: none;
+        }
+
         .post_content {
             position: absolute;
             z-index: -1;
@@ -39,7 +48,8 @@
 
         .description {
             width: 50%;
-            padding: 4rem;
+            padding-left: 4rem;
+            padding-right: 10rem;
         }
     }
 

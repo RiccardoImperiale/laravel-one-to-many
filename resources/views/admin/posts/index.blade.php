@@ -10,6 +10,7 @@
                         <img src="{{ $post->cover_image }}" alt="post image">
                         <p class="description">{{ $post->content }}</p>
                     </div>
+                    <a class="btn btn-danger" href="{{ route('admin.posts.show', $post) }}">Show Post</a>
                 </div>
             @empty
                 <p>Sorry, no posts to show...</p>
@@ -25,6 +26,7 @@
                 posts.forEach(p => {
                     p.classList.remove('open');
                     p.querySelector('.post_content').style.display = 'none';
+                    p.querySelector('.btn').style.display = 'none';
                     p.querySelector('.title').style.display = 'block';
                 });
 
@@ -32,6 +34,7 @@
 
                 if (this.classList.contains('open')) {
                     this.querySelector('.post_content').style.display = 'flex';
+                    this.querySelector('.btn').style.display = 'block';
                     this.querySelector('.title').style.display = 'none';
                 }
             });
