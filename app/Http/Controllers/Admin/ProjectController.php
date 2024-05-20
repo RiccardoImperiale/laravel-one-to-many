@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Project;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 
 class ProjectController extends Controller
 {
@@ -14,7 +15,6 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        // dd(Post::all());
         return view('admin.projects.index', ['projects' => Project::orderByDesc('id')->paginate(5)]);
     }
 
@@ -23,16 +23,24 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.projects.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    // public function store(StorePostRequest $request)
-    // {
-    //     //
-    // }
+    public function store(StoreProjectRequest $request)
+    {
+        $validated = $request->validated();
+
+        $slug = Str::slug($request->title, '-');
+
+        $validated['slug'] = $slug;
+
+        Project::create($validated);
+
+        return to_route('admin.projects.index');
+    }
 
     /**
      * Display the specified resource.

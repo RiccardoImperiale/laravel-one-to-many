@@ -12,8 +12,8 @@
                         <p class="description">{{ $project->content }}</p>
                     </div>
                     <div>
-                        {{-- <a class="btn btn-secondary" href="{{ route('admin.projects.edit', $post) }}">Edit Post</a>
-                        <a class="btn btn-dark" href="{{ route('admin.projects.destroy', $post) }}">Delete Post</a> --}}
+                        <a class="btn btn-secondary" href="{{ route('admin.projects.edit', $project) }}">Edit Post</a>
+                        <a class="btn btn-dark" href="{{ route('admin.projects.destroy', $project) }}">Delete Post</a>
                     </div>
                 </div>
             </div>

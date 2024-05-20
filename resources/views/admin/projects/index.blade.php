@@ -2,6 +2,9 @@
 
 @section('content')
     <div class="container">
+        <div class="d-flex justify-content-center mt-5">
+            <a class="btn btn-primary" href="{{ route('admin.projects.create') }}">Add New Project</a>
+        </div>
         <div class="projects">
             @forelse ($projects as $project)
                 <div id="{{ $project->id }}" class="project">
