@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\StoreProjectRequest;
-use App\Http\Requests\UpdatePostRequest;
+use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
@@ -53,24 +53,29 @@ class ProjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    // public function edit(Project $post)
-    // {
-    //     //
-    // }
+    public function edit(Project $project)
+    {
+        return view('admin.projects.edit', compact('project'));
+    }
 
     // /**
     //  * Update the specified resource in storage.
     //  */
-    // public function update(UpdatePostRequest $request, Project $post)
-    // {
-    //     //
-    // }
+    public function update(UpdateProjectRequest $request, Project $project)
+    {
+        $validated = $request->validated();
+
+        $project->update($validated);
+
+        return to_route('admin.projects.index', $project);
+    }
 
     // /**
     //  * Remove the specified resource from storage.
     //  */
-    // public function destroy(Project $post)
-    // {
-    //     //
-    // }
+    public function destroy(Project $project)
+    {
+        $project->delete();
+        return to_route('admin.projects.index');
+    }
 }
