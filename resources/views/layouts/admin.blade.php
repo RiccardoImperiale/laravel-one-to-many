@@ -44,13 +44,25 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
+
+
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a>
+                            <a class="nav-link" href="{{ route('admin.projects.index') }}">{{ __('All Projects') }}</a>
                         </li>
+
+                        <li class="nav-item">
+                            @if (auth()->user())
+                                <a class="ms-2 btn btn-primary" href="{{ route('admin.projects.create') }}">Add New
+                                    Project</a>
+                            @endif
+                        </li>
+
                     </ul>
+
+
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
