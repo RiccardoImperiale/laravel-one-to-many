@@ -8,8 +8,8 @@
                 <div id="{{ $project->id }}" class="project">
                     <div class="title">{{ $project->title }}</div>
                     <div class="project_content">
-                        <img src="{{ $project->cover_image }}" alt="post image">
-                        <p class="description">{{ $project->content }}</p>
+                        <img src="{{ $project->image }}" alt="post image">
+                        <p class="description">{{ $project->description }}</p>
                     </div>
                     <a class="btn btn-danger" href="{{ route('admin.projects.show', $project) }}">Show Post</a>
                 </div>

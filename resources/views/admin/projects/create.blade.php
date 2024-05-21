@@ -27,11 +27,11 @@
             </div>
 
             <div class="mb-3">
-                <label for="cover_image" class="form-label">Cover Image:</label>
-                <input type="text" class="form-control @error('cover_image') is-invalid @enderror" name="cover_image"
-                    id="cover_image" aria-describedby="cover_imageHelper" placeholder="Image" />
-                <small id="cover_imageHelper" class="form-text text-muted">Enter a cover image for this project</small>
-                @error('cover_image')
+                <label for="image" class="form-label">Cover Image:</label>
+                <input type="text" class="form-control @error('image') is-invalid @enderror" name="image"
+                    id="image" aria-describedby="imageHelper" placeholder="Image" />
+                <small id="imageHelper" class="form-text text-muted">Enter a cover image for this project</small>
+                @error('image')
                     <div class="text-danger py-2">
                         {{ $message }}
                     </div>
@@ -39,9 +39,10 @@
             </div>
 
             <div class="mb-3">
-                <label for="content" class="form-label">Content</label>
-                <textarea class="form-control @error('content') is-invalid @enderror" name="content" id="content" rows="5">{{ old('content') }}</textarea>
-                @error('content')
+                <label for="description" class="form-label">description</label>
+                <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description"
+                    rows="5">{{ old('description') }}</textarea>
+                @error('description')
                     <div class="text-danger py-2">
                         {{ $message }}
                     </div>
