@@ -5,15 +5,16 @@
         <div id="{{ $project->id }}" class="post">
             <h2 class="title">{{ $project->title }}</h2>
             <div class="post_content d-flex">
-                <img class="my-2 rounded" src="{{ $project->image }}" alt="post image">
+                <img width="400" class="my-2 rounded" src="{{ Vite::asset("resources/images/$project->image") }}"
+                    alt="post image">
                 <div class="ps-5 py-2 d-flex flex-column justify-content-between">
                     <div>
                         <h5>Description:</h5>
                         <p class="description">{{ $project->description }}</p>
                     </div>
                     <div class="d-flex gap-2">
-                        <a class="btn btn-dark" href="{{ $project->live_link }}">Live Version</a>
-                        <a class="btn btn-dark" href="{{ $project->code_link }}">Source Code</a>
+                        <a class="btn btn-dark" target="_blank" href="{{ $project->live_link }}">Live Version</a>
+                        <a class="btn btn-dark" target="_blank" href="{{ $project->code_link }}">Source Code</a>
                     </div>
                 </div>
             </div>
