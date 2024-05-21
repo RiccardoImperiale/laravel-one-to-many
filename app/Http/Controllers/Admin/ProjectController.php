@@ -39,7 +39,7 @@ class ProjectController extends Controller
 
         Project::create($validated);
 
-        return to_route('admin.projects.index');
+        return to_route('admin.projects.index')->with('message', 'Project created successfully');
     }
 
     /**
@@ -65,9 +65,12 @@ class ProjectController extends Controller
     {
         $validated = $request->validated();
 
+        // $slug = Str::slug($request->title, '-');
+        // $validated['slug'] = $slug;
+
         $project->update($validated);
 
-        return to_route('admin.projects.index', $project);
+        return to_route('admin.projects.index', $project)->with('message', "Project $project->title updated successfully");
     }
 
     // /**
@@ -76,6 +79,6 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         $project->delete();
-        return to_route('admin.projects.index');
+        return to_route('admin.projects.index')->with('message', 'Project deleted successfully');
     }
 }

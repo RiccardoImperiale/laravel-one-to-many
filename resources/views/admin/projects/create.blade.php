@@ -2,7 +2,6 @@
 
 
 @section('content')
-
     <header class="py-3 bg-dark text-white">
         <div class="container">
             <h2 class="text-center">New Project</h2>
@@ -10,23 +9,15 @@
     </header>
 
     <div class="container py-5">
-        @if ($errors->any())
-            <div class="alert alert-danger" role="alert">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+        @include('partials.validation-messages')
 
         <form action="{{ route('admin.projects.store') }}" method="post">
             @csrf
 
             <div class="mb-3">
                 <label for="title" class="form-label">Title:</label>
-                <input type="text" class="form-control @error('title') is-invalid @enderror" name="title"
-                    id="title" aria-describedby="titleHelper" placeholder="Title" value="{{ old('title') }}" />
+                <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title"
+                    aria-describedby="titleHelper" placeholder="Title" value="{{ old('title') }}" />
                 <small id="titleHelper" class="form-text text-muted">Type a title for this project</small>
                 @error('title')
                     <div class="text-danger py-2">
@@ -63,5 +54,4 @@
 
         </form>
     </div>
-
 @endsection

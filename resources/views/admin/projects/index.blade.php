@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container">
+        @include('partials.session-messages')
         <div class="projects">
             @forelse ($projects as $project)
                 <div id="{{ $project->id }}" class="project">
