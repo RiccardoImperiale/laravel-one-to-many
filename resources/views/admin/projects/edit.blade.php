@@ -49,6 +49,28 @@
                 @enderror
             </div>
 
+            <div class="mb-3">
+                <label for="live_link" class="form-label">Live Link:</label>
+                <input type="text" class="form-control @error('live_link') is-invalid @enderror" name="live_link"
+                    id="live_link" value="{{ old('live_link', $project->live_link) }}" />
+                @error('live_link')
+                    <div class="text-danger py-2">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+
+            <div class="mb-3">
+                <label for="code_link" class="form-label">Code Link:</label>
+                <input type="text" class="form-control @error('code_link') is-invalid @enderror" name="code_link"
+                    id="code_link" value="{{ old('code_link', $project->code_link) }}" />
+                @error('code_link')
+                    <div class="text-danger py-2">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+
             <button type="submit" class="btn btn-danger">
                 Confirm Edit
             </button>

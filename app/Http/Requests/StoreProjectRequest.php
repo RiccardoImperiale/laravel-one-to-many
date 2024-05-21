@@ -24,7 +24,9 @@ class StoreProjectRequest extends FormRequest
         return [
             'title' => 'required|min:5|max:150',
             'description' => 'required',
-            'image' => 'required'
+            'image' => 'required',
+            'live_link' => 'required',
+            'code_link' => 'required'
         ];
     }
 }
