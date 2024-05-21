@@ -3,69 +3,6 @@
 
 .projects {
     margin: 4rem 0;
-    border-top: 2px solid #b0b0b0;
-
-    .project {
-        border-bottom: 2px solid #b0b0b0;
-
-        height: 100px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all .5s ease;
-        cursor: pointer;
-        overflow: hidden;
-        position: relative;
-
-        &:hover {
-            background-color: #EF3B2D;
-        }
-
-        &:hover .title {
-            color: white;
-        }
-
-        a {
-            z-index: 999;
-            display: inline-block;
-            position: absolute;
-            right: 0;
-            bottom: 2rem;
-            display: none;
-        }
-
-        .project_content {
-            position: absolute;
-            z-index: -1;
-            align-items: center;
-            display: none;
-        }
-
-        img {
-            width: 50%;
-            left: 0;
-        }
-
-        .description {
-            width: 50%;
-            padding-left: 4rem;
-            padding-right: 10rem;
-        }
-    }
-
-    .project.open {
-        height: 300px;
-    }
-
-    .project.open:hover {
-        background-color: transparent;
-        height: 300px;
-    }
-
-    .project.open img {
-        display: block;
-    }
-
 
 }
 

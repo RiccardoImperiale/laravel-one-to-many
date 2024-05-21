@@ -10,6 +10,10 @@
                     <div>
                         <h5>Description:</h5>
                         <p class="description">{{ $project->description }}</p>
+                        <div class="links">
+                            <a href="{{ $project->live_link }}">Live Version</a>
+                            <a href="{{ $project->code_link }}">Source Code</a>
+                        </div>
                     </div>
                     <div class="d-flex gap-2">
                         <a class="btn btn-secondary" href="{{ route('admin.projects.edit', $project) }}">Edit Post</a>
@@ -47,8 +51,6 @@
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>

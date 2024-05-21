@@ -12,41 +12,81 @@
     <div class="container">
         @include('partials.session-messages')
         <div class="projects">
-            @forelse ($projects as $project)
-                <div id="{{ $project->id }}" class="project">
-                    <div class="title">{{ $project->title }}</div>
-                    <div class="project_content">
-                        <img src="{{ $project->image }}" alt="post image">
-                        <p class="description">{{ $project->description }}</p>
-                    </div>
-                    <a class="btn btn-danger" href="{{ route('admin.projects.show', $project) }}">Show Post</a>
-                </div>
-            @empty
-                <p>Sorry, no projects to show...</p>
-            @endforelse
+            <table class="table align-middle ">
+                <thead>
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">title</th>
+                        <th scope="col">image</th>
+                        <th scope="col">actions</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    @forelse ($projects as $project)
+                        <tr>
+                            <th scope="row">{{ $project->id }}</th>
+                            <td>{{ $project->title }}</td>
+                            <td> {{ $project->image }}</td>
+                            <td>
+                                <div class="d-flex gap-1">
+                                    <a class="btn btn-dark" href="{{ route('admin.projects.show', $project) }}">
+                                        <span style="font-size: 0.7rem" class="text-uppercase">View</span>
+                                    </a>
+                                    <a class="btn btn-dark" href="{{ route('admin.projects.edit', $project) }}">
+                                        <span style="font-size: 0.7rem" class="text-uppercase">Edit</span>
+                                    </a>
+
+                                    <!-- Modal trigger button -->
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                        data-bs-target="#modal-{{ $project->id }}">
+                                        <span style="font-size: 0.7rem" class="text-uppercase">Delete</span>
+                                    </button>
+
+                                    <div class="modal fade" id="modal-{{ $project->id }}" tabindex="-1"
+                                        data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
+                                        aria-labelledby="modalTitle-{{ $project->id }}" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm"
+                                            role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="modalTitle-{{ $project->id }}">
+                                                        Delete project
+                                                    </h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Are you sure you want to delete this project:
+                                                    {{ $project->title }}
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">
+                                                        Close
+                                                    </button>
+                                                    <form action="{{ route('admin.projects.destroy', $project) }}"
+                                                        method="project">
+                                                        @csrf
+                                                        @method('DELETE')
+
+                                                        <button type="submit" class="btn btn-danger">
+                                                            Confirm
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    @empty
+                        <p>Sorry, no projects to show...</p>
+                    @endforelse
+                </tbody>
+            </table>
+
             {{ $projects->links('pagination::bootstrap-5') }}
         </div>
     </div>
-    <script>
-        let projects = document.querySelectorAll('.project');
-        projects.forEach(project => {
-            project.addEventListener('click', function() {
-
-                projects.forEach(p => {
-                    p.classList.remove('open');
-                    p.querySelector('.project_content').style.display = 'none';
-                    p.querySelector('.btn').style.display = 'none';
-                    p.querySelector('.title').style.display = 'block';
-                });
-
-                this.classList.toggle('open');
-
-                if (this.classList.contains('open')) {
-                    this.querySelector('.project_content').style.display = 'flex';
-                    this.querySelector('.btn').style.display = 'block';
-                    this.querySelector('.title').style.display = 'none';
-                }
-            });
-        });
-    </script>
 @endsection
