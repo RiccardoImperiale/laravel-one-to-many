@@ -53,13 +53,6 @@
                             <a class="nav-link" href="{{ route('admin.projects.index') }}">{{ __('All Projects') }}</a>
                         </li>
 
-                        <li class="nav-item">
-                            @if (auth()->user())
-                                <a class="ms-2 btn btn-primary" href="{{ route('admin.projects.create') }}">Add New
-                                    Project</a>
-                            @endif
-                        </li>
-
                     </ul>
 
 
