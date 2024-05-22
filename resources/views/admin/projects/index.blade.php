@@ -12,13 +12,13 @@
     <div class="container">
         @include('partials.session-messages')
         <div class="projects">
-            <table class="table align-middle ">
+            <table class="table align-middle table-hover">
                 <thead>
                     <tr>
                         <th scope="col">id</th>
                         <th scope="col">title</th>
                         <th scope="col">image</th>
-                        <th scope="col">actions</th>
+                        <th class="text-end" scope="col">actions</th>
                     </tr>
                 </thead>
                 <tbody class="table-group-divider">
@@ -27,11 +27,14 @@
                             <th scope="row">{{ $project->id }}</th>
                             <td>{{ $project->title }}</td>
                             <td>
-                                <img width="50" src="{{ asset("storage/$project->image") }}"
-                                    alt="{{ $project->title }}">
+                                @if (Str::startsWith($project->image, 'uploads/'))
+                                    <div class="image_container">
+                                        <img src="{{ asset("storage/$project->image") }}" alt="{{ $project->title }}">
+                                    </div>
+                                @endif
                             </td>
                             <td>
-                                <div class="d-flex gap-1">
+                                <div class="d-flex justify-content-end gap-1">
                                     <a class="btn btn-dark" href="{{ route('admin.projects.show', $project) }}">
                                         <span style="font-size: 0.7rem" class="text-uppercase">View</span>
                                     </a>
