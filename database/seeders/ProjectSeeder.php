@@ -23,7 +23,8 @@ class ProjectSeeder extends Seeder
                 'image' => 'iPhone-web.jpg',
                 'live_link' => 'https://iphone15webclone.netlify.app/',
                 'code_link' => 'https://github.com/RiccardoImperiale/iPhone-website-clone',
-            ]
+            ],
+
         ];
 
         foreach ($projects as $project) {
