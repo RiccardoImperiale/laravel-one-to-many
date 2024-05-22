@@ -6,6 +6,7 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ProjectController extends Controller
@@ -31,13 +32,15 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-        $validated = $request->validated();
+        $val_data = $request->validated();
 
         $slug = Str::slug($request->title, '-');
+        $val_data['slug'] = $slug;
 
-        $validated['slug'] = $slug;
+        $img_path = Storage::put('uploads', $request->image);
+        $val_data['image'] = $img_path;
 
-        Project::create($validated);
+        Project::create($val_data);
 
         return to_route('admin.projects.index')->with('message', 'Project created successfully');
     }
@@ -63,12 +66,21 @@ class ProjectController extends Controller
     //  */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        $validated = $request->validated();
+        $val_data = $request->validated();
 
-        // $slug = Str::slug($request->title, '-');
-        // $validated['slug'] = $slug;
+        $slug = Str::slug($request->title, '-');
+        $val_data['slug'] = $slug;
 
-        $project->update($validated);
+        if ($request->has('image')) {
+            if ($project->image) {
+                Storage::delete($project->image);
+            }
+
+            $img_path = Storage::put('uploads', $request->image);
+            $val_data['image'] = $img_path;
+        }
+
+        $project->update($val_data);
 
         return to_route('admin.projects.index', $project)->with('message', "Project $project->title updated successfully");
     }

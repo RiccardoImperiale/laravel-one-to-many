@@ -24,7 +24,7 @@ class UpdateProjectRequest extends FormRequest
         return [
             'title' => 'required|min:5|max:150',
             'description' => 'required',
-            'image' => 'required',
+            'image' => 'required|image|max:500',
             'live_link' => 'required',
             'code_link' => 'required'
         ];

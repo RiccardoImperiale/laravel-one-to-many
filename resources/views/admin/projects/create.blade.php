@@ -11,13 +11,13 @@
     <div class="container py-5">
         @include('partials.validation-messages')
 
-        <form action="{{ route('admin.projects.store') }}" method="post">
+        <form action="{{ route('admin.projects.store') }}" method="post" enctype="multipart/form-data">
             @csrf
 
             <div class="mb-3">
                 <label for="title" class="form-label">Title:</label>
-                <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title"
-                    value="{{ old('title') }}" />
+                <input type="text" class="form-control @error('title') is-invalid @enderror" name="title"
+                    id="title" value="{{ old('title') }}" />
                 @error('title')
                     <div class="text-danger py-2">
                         {{ $message }}
@@ -27,7 +27,7 @@
 
             <div class="mb-3">
                 <label for="image" class="form-label">Cover Image:</label>
-                <input type="text" class="form-control @error('image') is-invalid @enderror" name="image"
+                <input type="file" class="form-control @error('image') is-invalid @enderror" name="image"
                     id="image" />
                 @error('image')
                     <div class="text-danger py-2">
