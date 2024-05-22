@@ -26,7 +26,10 @@
                         <tr>
                             <th scope="row">{{ $project->id }}</th>
                             <td>{{ $project->title }}</td>
-                            <td> {{ $project->image }}</td>
+                            <td>
+                                <img width="50" src="{{ asset("storage/$project->image") }}"
+                                    alt="{{ $project->title }}">
+                            </td>
                             <td>
                                 <div class="d-flex gap-1">
                                     <a class="btn btn-dark" href="{{ route('admin.projects.show', $project) }}">
@@ -65,7 +68,7 @@
                                                         Close
                                                     </button>
                                                     <form action="{{ route('admin.projects.destroy', $project) }}"
-                                                        method="project">
+                                                        method="post">
                                                         @csrf
                                                         @method('DELETE')
 
