@@ -11,7 +11,7 @@
     </header>
     <div class="container">
         @include('partials.session-messages')
-        <div class="projects">
+        <div class="mt-4">
             <table class="table align-middle table-hover">
                 <thead>
                     <tr>
