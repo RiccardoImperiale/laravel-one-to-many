@@ -25,7 +25,7 @@
                 @enderror
             </div>
 
-            {{-- <div class="mb-3">
+            <div class="mb-3">
                 <label for="type_id" class="form-label">Types</label>
                 <select class="form-select form-select-lg" name="type_id" id="type_id">
                     <option selected disabled>Select a type</option>
@@ -35,7 +35,7 @@
                         </option>
                     @endforeach
                 </select>
-            </div> --}}
+            </div>
 
             <div class="mb-3">
                 <label for="image" class="form-label">Cover Image:</label>
@@ -62,7 +62,7 @@
             <div class="mb-3">
                 <label for="live_link" class="form-label">Live Link:</label>
                 <input type="text" class="form-control @error('live_link') is-invalid @enderror" name="live_link"
-                    id="live_link" />
+                    id="live_link" value="{{ old('live_link') }}" />
                 @error('live_link')
                     <div class="text-danger py-2">
                         {{ $message }}
@@ -73,7 +73,7 @@
             <div class="mb-3">
                 <label for="code_link" class="form-label">Code Link:</label>
                 <input type="text" class="form-control @error('code_link') is-invalid @enderror" name="code_link"
-                    id="code_link" />
+                    id="code_link" value="{{ old('code_link') }}" />
                 @error('code_link')
                     <div class="text-danger py-2">
                         {{ $message }}
