@@ -17,10 +17,11 @@ class ProjectSeeder extends Seeder
     {
         $projects = [
             [
+                'type_id' => 2,
                 'title' => 'iPhone 15 Website',
                 'slug' => 'iPhone-15-Website',
                 'description' => 'lorem description project 1 ipsum sum pronobis opus cementitio',
-                'image' => 'iPhone-web.jpg',
+                'image' => null,
                 'live_link' => 'https://iphone15webclone.netlify.app/',
                 'code_link' => 'https://github.com/RiccardoImperiale/iPhone-website-clone',
             ],
@@ -29,6 +30,7 @@ class ProjectSeeder extends Seeder
 
         foreach ($projects as $project) {
             $newProject = new Project();
+            $newProject->type_id = $project['type_id'];
             $newProject->title = $project['title'];
             $newProject->slug = $project['slug'];
             $newProject->description = $project['description'];

@@ -8,6 +8,8 @@
                 <img width="400" class="my-2 rounded" src="{{ asset("storage/$project->image") }}" alt="post image">
                 <div class="ps-5 py-2 d-flex flex-column justify-content-between">
                     <div>
+                        <h5>Type:</h5>
+                        <p>{{ $project->type->name }}</p>
                         <h5>Description:</h5>
                         <p class="description">{{ $project->description }}</p>
                     </div>

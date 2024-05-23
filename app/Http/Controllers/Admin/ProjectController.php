@@ -6,6 +6,7 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
 use App\Http\Controllers\Controller;
+use App\Models\Type;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -50,6 +51,13 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
+        // $type = Type::find($project->id);
+
+        // $project['type_id'] = $project->type->id;
+
+        // dd($project);
+
+
         return view('admin.projects.show', compact('project'));
     }
 
