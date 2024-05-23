@@ -17,6 +17,7 @@
                     <tr>
                         <th scope="col">id</th>
                         <th scope="col">title</th>
+                        <th scope="col">type</th>
                         <th scope="col">image</th>
                         <th class="text-end" scope="col">actions</th>
                     </tr>
@@ -26,6 +27,7 @@
                         <tr>
                             <th scope="row">{{ $project->id }}</th>
                             <td>{{ $project->title }}</td>
+                            <td>{{ $project->type_id }}</td>
                             <td>
                                 @if (Str::startsWith($project->image, 'uploads/'))
                                     <div class="image_container">

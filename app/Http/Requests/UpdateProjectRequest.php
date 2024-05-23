@@ -22,11 +22,12 @@ class UpdateProjectRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'type_id' => 'nullable|exists:types,id',
             'title' => 'required|min:5|max:150',
             'description' => 'required',
             'image' => 'required|image|max:500',
-            'live_link' => 'required',
-            'code_link' => 'required'
+            'live_link' => 'nullable',
+            'code_link' => 'nullable'
         ];
     }
 }
