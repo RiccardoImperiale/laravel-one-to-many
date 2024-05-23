@@ -27,7 +27,7 @@
                         <tr>
                             <th scope="row">{{ $project->id }}</th>
                             <td>{{ $project->title }}</td>
-                            <td>{{ $project->type_id }}</td>
+                            <td>{{ $project->type?->name ?? 'no type' }}</td>
                             <td>
                                 @if (Str::startsWith($project->image, 'uploads/'))
                                     <div class="image_container">
