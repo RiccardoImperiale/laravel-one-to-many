@@ -27,6 +27,7 @@ class TypeController extends Controller
         return view('admin.types.create');
     }
 
+
     /**
      * Store a newly created resource in storage.
      */
@@ -45,7 +46,8 @@ class TypeController extends Controller
      */
     public function show(Type $type)
     {
-        //
+
+        return view('admin.types.show', compact('type'));
     }
 
     /**
@@ -53,7 +55,7 @@ class TypeController extends Controller
      */
     public function edit(Type $type)
     {
-        //
+        return view('admin.types.edit', compact('type'));
     }
 
     /**
@@ -61,7 +63,12 @@ class TypeController extends Controller
      */
     public function update(UpdateTypeRequest $request, Type $type)
     {
-        //
+        $val_data = $request->validated();
+        $val_data['slug'] = Str::slug($request->name, '-');
+
+        $type->update($val_data);
+
+        return to_route('admin.types.index', $type)->with('message', "Type $type->name edited successfully");
     }
 
     /**
@@ -69,6 +76,7 @@ class TypeController extends Controller
      */
     public function destroy(Type $type)
     {
-        //
+        $type->delete();
+        return to_route('admin.types.index', $type)->with('message', "Type $type->name deleted successfully");
     }
 }

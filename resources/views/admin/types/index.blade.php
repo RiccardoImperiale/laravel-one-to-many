@@ -30,6 +30,10 @@
                             <td>
                                 <div class="d-flex justify-content-end gap-1">
 
+                                    <a class="btn btn-dark" href="{{ route('admin.types.show', $type) }}">
+                                        <span style="font-size: 0.7rem" class="text-uppercase">Show</span>
+                                    </a>
+
                                     <a class="btn btn-dark" href="{{ route('admin.types.edit', $type) }}">
                                         <span style="font-size: 0.7rem" class="text-uppercase">Edit</span>
                                     </a>
@@ -55,7 +59,7 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     Are you sure you want to delete this type:
-                                                    {{ $type->title }}
+                                                    {{ $type->name }}
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
